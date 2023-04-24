@@ -33,7 +33,7 @@ export function getFromLocalStorage(key) {
 
     const value = localStorage.getItem(key)
 
-    return typeof value === 'string' ? value : JSON.parse(value)
+    return JSON.parse(value) ? JSON.parse(value) : value
   } catch (error) {
     throw new Error('Error retrieving from localStorage: ' + error.message)
   }
