@@ -29,18 +29,17 @@ const Trophy = () => {
   return (
     <Card sx={{ position: 'relative' }}>
       <CardContent>
-        <Typography variant='h6'>¡Bienvenido a bordo, Juan! 🚗👨‍✈️</Typography>
+        <Typography variant='h6'>¡Bienvenido, Administrador! 🚗👨‍✈️</Typography>
         <Typography variant='body2' sx={{ letterSpacing: '0.25px' }}>
-          Nuevo conductor del mes
+          Nuevo mes, nuevos retos
         </Typography>
         <Typography variant='h6' sx={{ my: 4, color: 'primary.main' }}>
-          26 viajes completados
+          Revisa las estadísticas de la plataforma
         </Typography>
-        <Button size='small' variant='contained'>
-          Ver Historial
-        </Button>
+        {/* <Button size='small' variant='contained'>
+          Ver Estadísticas
+        </Button> */}
         <TriangleImg alt='fondo con triángulos' src={`/images/misc/${imageSrc}`} />
-        {/* <TrophyImg alt='trofeo' src='/images/misc/trophy.png' /> */}
       </CardContent>
     </Card>
   )
