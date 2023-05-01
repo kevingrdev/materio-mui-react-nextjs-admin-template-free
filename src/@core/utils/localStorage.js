@@ -33,8 +33,18 @@ export function getFromLocalStorage(key) {
 
     const value = localStorage.getItem(key)
 
-    return JSON.parse(value) ? JSON.parse(value) : value
+    return parseJSON(value)
   } catch (error) {
     throw new Error('Error retrieving from localStorage: ' + error.message)
+  }
+}
+
+function parseJSON(value) {
+  try {
+    const parsedValue = JSON.parse(value)
+
+    return typeof parsedValue === 'object' ? parsedValue : value
+  } catch (error) {
+    return value
   }
 }

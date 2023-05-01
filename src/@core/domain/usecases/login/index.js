@@ -10,7 +10,6 @@ function validateParams(user, pass) {
 async function login({ user, pass }) {
   try {
     validateParams(user, pass)
-
     const response = await axios.post('/auth/login', { email: user, password: pass })
     console.log({ response })
     const { token } = response.data.data.tokens.token
@@ -22,6 +21,7 @@ async function login({ user, pass }) {
     return [null, response.data]
   } catch (error) {
     console.error(error)
+
     return [new Error('Error al iniciar sesión'), null]
   }
 }

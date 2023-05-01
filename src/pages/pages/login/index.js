@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
+import Alert from '@mui/material/Alert'
 
 import TextField from '@mui/material/TextField'
 import InputLabel from '@mui/material/InputLabel'
@@ -34,6 +35,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 // ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
 import login from 'src/@core/domain/usecases/login'
+import { CloseCircleOutline, Close } from 'mdi-material-ui'
 
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -61,6 +63,11 @@ const LoginPage = () => {
     showPassword: false
   })
 
+  const [err, setErr] = useState({
+    message: '',
+    show: ''
+  })
+
   // ** Hook
 
   const router = useRouter()
@@ -86,12 +93,33 @@ const LoginPage = () => {
     })
     console.log({ err, res })
     if (err === null) {
-      router.push('/')
+      return router.push('/')
     }
+    setErr({ show: true, message: err.message ?? 'Error al iniciar sesión' })
   }
 
   return (
     <Box className='content-center'>
+      {err.show && (
+        <Alert
+          severity='error'
+          action={
+            <IconButton
+              aria-label='close'
+              color='inherit'
+              size='small'
+              onClick={() => {
+                setErr(e => ({ ...e, show: false }))
+              }}
+            >
+              <Close fontSize='inherit' />
+            </IconButton>
+          }
+          sx={{ position: 'absolute', top: 40 }}
+        >
+          {err.message}
+        </Alert>
+      )}
       <Card sx={{ zIndex: 1 }}>
         <CardContent sx={{ padding: theme => `${theme.spacing(12, 9, 7)} !important` }}>
           <Box sx={{ mb: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}></Box>
@@ -134,14 +162,7 @@ const LoginPage = () => {
               />
             </FormControl>
 
-            <Button
-              fullWidth
-              size='large'
-              variant='contained'
-              type='submit'
-              sx={{ marginBottom: 7, marginTop: 12 }}
-              // onClick={() => router.push('/')}
-            >
+            <Button fullWidth size='large' variant='contained' type='submit' sx={{ marginBottom: 7, marginTop: 12 }}>
               {translations.loginButton}
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
