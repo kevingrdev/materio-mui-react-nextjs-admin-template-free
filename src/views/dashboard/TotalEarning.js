@@ -11,31 +11,32 @@ import LinearProgress from '@mui/material/LinearProgress'
 // ** Icons Imports
 import MenuUp from 'mdi-material-ui/MenuUp'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
+
 const data = [
   {
-    progress: 75,
+    progress: 49,
     imgHeight: 20,
     title: 'Viajes en Auto',
     color: 'primary',
-    amount: '24,895.65',
+    amount: '120',
     subtitle: 'Estadísticas de rendimiento',
     imgSrc: '/images/cards/logo-zipcar.png'
   },
   {
-    progress: 50,
+    progress: 20,
     color: 'info',
     imgHeight: 27,
-    title: 'Viajes en Bicicleta',
-    amount: '8,650.20',
+    title: 'Viajes en Pickup',
+    amount: '50',
     subtitle: 'Estadísticas de rendimiento',
     imgSrc: '/images/cards/logo-bitbank.png'
   },
   {
-    progress: 20,
+    progress: 30,
     imgHeight: 20,
     title: 'Viajes en Moto',
     color: 'secondary',
-    amount: '1,245.80',
+    amount: '75',
     subtitle: 'Estadísticas de rendimiento',
     imgSrc: '/images/cards/logo-aviato.png'
   }
