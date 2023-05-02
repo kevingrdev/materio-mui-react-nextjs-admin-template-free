@@ -11,7 +11,7 @@ export function saveToLocalStorage(key, value) {
       throw new Error('Key must be a string')
     }
 
-    const valueString = typeof value === 'string' ? value : JSON.stringify(value)
+    const valueString = typeof value === 'string' || typeof value === 'number' ? value : JSON.stringify(value)
     localStorage.setItem(key, valueString)
   } catch (error) {
     throw new Error('Error saving to localStorage: ' + error.message)

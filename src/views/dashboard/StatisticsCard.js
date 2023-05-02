@@ -1,3 +1,5 @@
+import useSalesData from 'src/@core/hooks/useSalesData'
+
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -15,60 +17,55 @@ import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CellphoneLink from 'mdi-material-ui/CellphoneLink'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 
-const salesData = [
-  {
-    stats: '245k',
-    title: 'Viajes',
-    color: 'primary',
-    icon: <TrendingUp sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '12.5k',
-    title: 'Pasajeros',
-    color: 'success',
-    icon: <AccountOutline sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '1.54k',
-    color: 'warning',
-    title: 'Conductores',
-    icon: <CellphoneLink sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '$88k',
-    color: 'info',
-    title: 'Ingresos',
-    icon: <CurrencyUsd sx={{ fontSize: '1.75rem' }} />
+function getIcon(icon) {
+  switch (icon) {
+    case 'TrendingUp':
+      return <TrendingUp sx={{ fontSize: '1.75rem' }} />
+    case 'CurrencyUsd':
+      return <CurrencyUsd sx={{ fontSize: '1.75rem' }} />
+    case 'DotsVertical':
+      return <DotsVertical sx={{ fontSize: '1.75rem' }} />
+    case 'CellphoneLink':
+      return <CellphoneLink sx={{ fontSize: '1.75rem' }} />
+    case 'AccountOutline':
+      return <AccountOutline sx={{ fontSize: '1.75rem' }} />
+    default:
+      return null
   }
-]
+}
 
-const renderStats = () => {
-  return salesData.map((item, index) => (
-    <Grid item xs={12} sm={3} key={index}>
-      <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar
-          variant='rounded'
-          sx={{
-            mr: 3,
-            width: 44,
-            height: 44,
-            boxShadow: 3,
-            color: 'common.white',
-            backgroundColor: `${item.color}.main`
-          }}
-        >
-          {item.icon}
-        </Avatar>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography variant='caption'>{item.title}</Typography>
-          <Typography variant='h6'>{item.stats}</Typography>
-        </Box>
-      </Box>
-    </Grid>
-  ))
+const renderStats = salesData => {
+  return salesData.map(
+    (item, index) =>
+      item.stats !== 'No registrados' && (
+        <Grid item xs={12} sm={3} key={index}>
+          <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Avatar
+              variant='rounded'
+              sx={{
+                mr: 3,
+                width: 44,
+                height: 44,
+                boxShadow: 3,
+                color: 'common.white',
+                backgroundColor: `${item.color}.main`
+              }}
+            >
+              {getIcon(item.icon)}
+            </Avatar>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography variant='caption'>{item.title}</Typography>
+              <Typography variant='h6'>{item.stats}</Typography>
+            </Box>
+          </Box>
+        </Grid>
+      )
+  )
 }
 
 const StatisticsCard = () => {
+  const { salesData, isLoading, error } = useSalesData()
+
   return (
     <Card>
       <CardHeader
@@ -81,7 +78,7 @@ const StatisticsCard = () => {
         subheader={
           <Typography variant='body2'>
             <Box component='span' sx={{ fontWeight: 600, color: 'text.primary' }}>
-              48.5% de crecimiento
+              4.5% de crecimiento
             </Box>{' '}
             😎 este mes
           </Typography>
@@ -96,7 +93,7 @@ const StatisticsCard = () => {
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(3)} !important` }}>
         <Grid container spacing={[5, 0]}>
-          {renderStats()} {/* Este es un placeholder para la función que renderiza las estadísticas */}
+          {renderStats(salesData)} {/* Este es un placeholder para la función que renderiza las estadísticas */}
         </Grid>
       </CardContent>
     </Card>

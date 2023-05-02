@@ -18,10 +18,17 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 import Table from 'src/views/dashboard/Table'
 import Trophy from 'src/views/dashboard/Trophy'
 import TotalEarning from 'src/views/dashboard/TotalEarning'
-import StatisticsCard from 'src/views/dashboard/StatisticsCard'
+
+// import StatisticsCard from 'src/views/dashboard/StatisticsCard'
 import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
 import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
-import SalesByCountries from 'src/views/dashboard/SalesByCountries'
+
+// import SalesByCountries from 'src/views/dashboard/SalesByCountries'
+
+import dynamic from 'next/dynamic'
+
+const SalesByCountries = dynamic(() => import('src/views/dashboard/SalesByCountries'), { ssr: false })
+const StatisticsCard = dynamic(() => import('src/views/dashboard/StatisticsCard'), { ssr: false })
 
 const Dashboard = () => {
   return (
