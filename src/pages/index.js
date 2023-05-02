@@ -41,8 +41,6 @@ const Dashboard = () => {
   const userComplaint = Math.floor((trips / 100) * 1.4)
   const tripsCancel = Math.floor((trips / 100) * 1.4)
 
-  // const tripYear = Math.floor(trips)
-  // const tripYear = Math.floor(trips * 12.24)
   const newDrivers = Math.floor((drivers / 100) * 4.4)
 
   return (
@@ -107,14 +105,14 @@ const Dashboard = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <SalesByCountries />
+          <SalesByCountries trips={trips} />
         </Grid>
-        <Grid item xs={12} md={12} lg={8}>
+        {/* <Grid item xs={12} md={12} lg={8}>
           <DepositWithdraw />
-        </Grid>
-        <Grid item xs={12}>
+        </Grid> */}
+        {/* <Grid item xs={12}>
           <Table />
-        </Grid>
+        </Grid> */}
       </Grid>
     </ApexChartWrapper>
   )

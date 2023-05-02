@@ -12,60 +12,60 @@ import ChevronUp from 'mdi-material-ui/ChevronUp'
 import ChevronDown from 'mdi-material-ui/ChevronDown'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 
-const data = [
-  {
-    sales: '125k',
-    trendDir: 'up',
-    subtitle: 'Tlaxcala',
-    title: '3.5M',
-    avatarText: 'TL',
-    trendNumber: '18.6%',
-    avatarColor: 'success',
-    trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '94k',
-    subtitle: 'Apizaco',
-    trendDir: 'down',
-    title: '2.1M',
-    avatarText: 'AP',
-    trendNumber: '6.8%',
-    avatarColor: 'error',
-    trend: <ChevronDown sx={{ color: 'error.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '62k',
-    title: '1.5M',
-    trendDir: 'up',
-    avatarText: 'HU',
-    subtitle: 'Hueyotlipan',
-    trendNumber: '13.7%',
-    avatarColor: 'warning',
-    trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '47k',
-    title: '1.2M',
-    trendDir: 'down',
-    avatarText: 'TL',
-    subtitle: 'Tlaxco',
-    trendNumber: '9.8%',
-    avatarColor: 'secondary',
-    trend: <ChevronDown sx={{ color: 'error.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '32k',
-    title: '845k',
-    trendDir: 'up',
-    avatarText: 'CA',
-    subtitle: 'Calpulalpan',
-    trendNumber: '14.3%',
-    avatarColor: 'error',
-    trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
-  }
-]
+const SalesByCountries = ({ trips = 0 }) => {
+  const data = [
+    {
+      sales: Math.floor((trips / 100) * 18.6),
+      trendDir: 'up',
+      subtitle: 'Tlaxcala',
+      title: '3.5M',
+      avatarText: 'TL',
+      trendNumber: '18.6%',
+      avatarColor: 'success',
+      trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
+    },
+    {
+      sales: Math.floor((trips / 100) * 6.8),
+      subtitle: 'Apizaco',
+      trendDir: 'down',
+      title: '2.1M',
+      avatarText: 'AP',
+      trendNumber: '6.8%',
+      avatarColor: 'error',
+      trend: <ChevronDown sx={{ color: 'error.main', fontWeight: 600 }} />
+    },
+    {
+      sales: Math.floor((trips / 100) * 13.7),
+      title: '1.5M',
+      trendDir: 'up',
+      avatarText: 'HU',
+      subtitle: 'Hueyotlipan',
+      trendNumber: '13.7%',
+      avatarColor: 'warning',
+      trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
+    },
+    {
+      sales: Math.floor((trips / 100) * 9.8),
+      title: '1.2M',
+      trendDir: 'down',
+      avatarText: 'TL',
+      subtitle: 'Tlaxco',
+      trendNumber: '9.8%',
+      avatarColor: 'secondary',
+      trend: <ChevronDown sx={{ color: 'error.main', fontWeight: 600 }} />
+    },
+    {
+      sales: Math.floor((trips / 100) * 14.3),
+      title: '845k',
+      trendDir: 'up',
+      avatarText: 'CA',
+      subtitle: 'Calpulalpan',
+      trendNumber: '14.3%',
+      avatarColor: 'error',
+      trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
+    }
+  ]
 
-const SalesByCountries = () => {
   return (
     <Card>
       <CardHeader
