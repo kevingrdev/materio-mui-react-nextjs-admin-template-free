@@ -26,7 +26,7 @@ const statusObj = {
 
 const DashboardTable = () => {
   // const { users, page, loading, nextPage, prevPage } = useGetUsers()
-  const { drivers, page, loading, nextPage, prevPage } = useGetDrivers()
+  const { drivers, cities, page, loading, nextPage, prevPage } = useGetDrivers()
   console.log({ drivers })
 
   const isLicenseValid = expirationDateString => {
@@ -54,6 +54,12 @@ const DashboardTable = () => {
     return `${day}/${month}/${year}`
   }
 
+  const findCityNameById = (cityId, cities) => {
+    const city = cities.find(city => city.id === cityId)
+
+    return city ? city.name : 'Ciudad no encontrada'
+  }
+
   return (
     <Card>
       {loading && <LinearProgress />}
@@ -74,6 +80,7 @@ const DashboardTable = () => {
           <TableBody>
             {(drivers?.data?.drivers ?? []).map(row => {
               const isLicenseValidValue = isLicenseValid(row.license_expiration_date)
+              const cityName = findCityNameById(row.city_id, cities)
 
               return (
                 <TableRow hover key={row.id} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
@@ -87,7 +94,7 @@ const DashboardTable = () => {
                   </TableCell>
                   <TableCell>{row.email}</TableCell>
                   <TableCell>{row.phone}</TableCell>
-                  <TableCell>{row.city_id}</TableCell>
+                  <TableCell>{cityName}</TableCell>
                   <TableCell>
                     {row.license_expiration_date ? (
                       <Typography sx={{ color: isLicenseValidValue ? 'success.main' : 'error.main' }}>

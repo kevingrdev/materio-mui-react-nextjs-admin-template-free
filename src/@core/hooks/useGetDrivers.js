@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react'
 import getDrivers from 'src/@core/domain/usecases/getDrivers'
+import getCities from 'src/@core/domain/usecases/getCities'
 
 function useGetDrivers() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [drivers, setDrivers] = useState([])
   const [page, setPage] = useState(1)
+  const [cities, setCities] = useState([])
 
   useEffect(() => {
     async function fetchDrivers() {
       setLoading(true)
 
       const [err, data] = await getDrivers({ page })
-
+      const [errCities, dataCities] = await getCities({ page })
+      setCities(dataCities.data.cities ?? [])
       if (err) {
         setError(err)
       } else {
@@ -33,7 +36,7 @@ function useGetDrivers() {
     setPage(p => p - 1)
   }
 
-  return { loading, error, drivers, page, prevPage, nextPage }
+  return { loading, error, drivers, page, cities, prevPage, nextPage }
 }
 
 export default useGetDrivers
