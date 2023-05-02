@@ -10,7 +10,6 @@ import LinearProgress from '@mui/material/LinearProgress'
 
 // ** Icons Imports
 import MenuUp from 'mdi-material-ui/MenuUp'
-import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 const data = [
   {
@@ -18,7 +17,7 @@ const data = [
     imgHeight: 20,
     title: 'Viajes en Auto',
     color: 'primary',
-    amount: '120',
+    amount: '1200',
     subtitle: 'Estadísticas de rendimiento',
     imgSrc: '/images/cards/logo-zipcar.png'
   },
@@ -27,7 +26,7 @@ const data = [
     color: 'info',
     imgHeight: 27,
     title: 'Viajes en Pickup',
-    amount: '50',
+    amount: '500',
     subtitle: 'Estadísticas de rendimiento',
     imgSrc: '/images/cards/logo-bitbank.png'
   },
@@ -36,7 +35,7 @@ const data = [
     imgHeight: 20,
     title: 'Viajes en Moto',
     color: 'secondary',
-    amount: '75',
+    amount: '750',
     subtitle: 'Estadísticas de rendimiento',
     imgSrc: '/images/cards/logo-aviato.png'
   }
