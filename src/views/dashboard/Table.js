@@ -9,6 +9,7 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import Typography from '@mui/material/Typography'
 import TableContainer from '@mui/material/TableContainer'
+import { TablePagination } from '@mui/material'
 
 const rows = [
   {
@@ -147,6 +148,15 @@ const DashboardTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component='div'
+        count={10}
+        rowsPerPage={12}
+        page={1}
+        onPageChange={() => {}}
+        onRowsPerPageChange={() => {}}
+      />
     </Card>
   )
 }

@@ -1,14 +1,9 @@
 // ** Icon imports
 import Login from 'mdi-material-ui/Login'
-import Table from 'mdi-material-ui/Table'
-import CubeOutline from 'mdi-material-ui/CubeOutline'
 import HomeOutline from 'mdi-material-ui/HomeOutline'
-import FormatLetterCase from 'mdi-material-ui/FormatLetterCase'
+import Car from 'mdi-material-ui/Car'
+import Account from 'mdi-material-ui/Account'
 import AccountCogOutline from 'mdi-material-ui/AccountCogOutline'
-import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
-import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
-import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
-import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
 
 const navigation = () => {
   return [
@@ -18,7 +13,19 @@ const navigation = () => {
       path: '/'
     },
     {
-      title: 'Configuraciones de la cuenta',
+      title: 'Usuarios',
+      icon: Account,
+      path: '/usuarios',
+      openInNewTab: false
+    },
+    {
+      title: 'Conductores',
+      icon: Car,
+      path: '/conductores',
+      openInNewTab: false
+    },
+    {
+      title: 'Configuraciones',
       icon: AccountCogOutline,
       path: '/account-settings'
     },
@@ -28,6 +35,7 @@ const navigation = () => {
       path: '/pages/login',
       openInNewTab: false
     }
+
     // {
     //   title: 'Register',
     //   icon: AccountPlusOutline,

@@ -1,8 +1,13 @@
 import axios from 'src/@core/utils/axios'
 
-async function getDrivers() {
+async function getDrivers({ page = 1 }) {
   try {
-    const response = await axios.post('/drivers/search')
+    const response = await axios.get('/core/admin/drivers/search', {
+      params: {
+        page,
+        status: ['ACCEPT', 'RETENTION', 'NEW', 'BLOCKED_BY_PAYMENT', 'BLOCKED']
+      }
+    })
 
     console.log({ response })
 
