@@ -40,6 +40,9 @@ const Dashboard = () => {
   const tripsWeek = Math.floor(trips / 4)
   const userComplaint = Math.floor((trips / 100) * 1.4)
   const tripsCancel = Math.floor((trips / 100) * 1.4)
+
+  // const tripYear = Math.floor(trips)
+  // const tripYear = Math.floor(trips * 12.24)
   const newDrivers = Math.floor((drivers / 100) * 4.4)
 
   return (
@@ -55,7 +58,7 @@ const Dashboard = () => {
           <WeeklyOverview />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <TotalEarning />
+          <TotalEarning trips={trips} />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <Grid container spacing={6}>

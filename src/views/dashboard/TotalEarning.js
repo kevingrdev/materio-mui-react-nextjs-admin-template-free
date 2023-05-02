@@ -11,43 +11,43 @@ import LinearProgress from '@mui/material/LinearProgress'
 // ** Icons Imports
 import MenuUp from 'mdi-material-ui/MenuUp'
 
-const data = [
-  {
-    progress: 49,
-    imgHeight: 20,
-    title: 'Viajes en Auto',
-    color: 'primary',
-    amount: '1200',
-    subtitle: 'Estadísticas de rendimiento',
-    imgSrc: '/images/cards/logo-zipcar.png'
-  },
-  {
-    progress: 20,
-    color: 'info',
-    imgHeight: 27,
-    title: 'Viajes en Pickup',
-    amount: '500',
-    subtitle: 'Estadísticas de rendimiento',
-    imgSrc: '/images/cards/logo-bitbank.png'
-  },
-  {
-    progress: 30,
-    imgHeight: 20,
-    title: 'Viajes en Moto',
-    color: 'secondary',
-    amount: '750',
-    subtitle: 'Estadísticas de rendimiento',
-    imgSrc: '/images/cards/logo-aviato.png'
-  }
-]
+const TotalEarning = ({ trips }) => {
+  const data = [
+    {
+      progress: 49,
+      imgHeight: 20,
+      title: 'Viajes en Auto',
+      color: 'primary',
+      amount: Math.floor((trips / 100) * 49),
+      subtitle: 'Estadísticas de rendimiento',
+      imgSrc: '/images/cards/logo-zipcar.png'
+    },
+    {
+      progress: 20,
+      color: 'info',
+      imgHeight: 27,
+      title: 'Viajes en Pickup',
+      amount: Math.floor((trips / 100) * 20),
+      subtitle: 'Estadísticas de rendimiento',
+      imgSrc: '/images/cards/logo-bitbank.png'
+    },
+    {
+      progress: 30,
+      imgHeight: 20,
+      title: 'Viajes en Moto',
+      color: 'secondary',
+      amount: Math.floor((trips / 100) * 30),
+      subtitle: 'Estadísticas de rendimiento',
+      imgSrc: '/images/cards/logo-aviato.png'
+    }
+  ]
 
-const TotalEarning = () => {
   return (
     <Card sx={{ height: '100%' }}>
       <CardContent sx={{ pt: theme => `${theme.spacing(6.25)} !important` }}>
         <Box sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
           <Typography variant='h4' sx={{ fontWeight: 600, fontSize: '2.125rem !important' }}>
-            10,000
+            {trips}
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', color: 'success.main' }}>
             <MenuUp sx={{ fontSize: '1.875rem', verticalAlign: 'middle' }} />
@@ -58,7 +58,7 @@ const TotalEarning = () => {
         </Box>
 
         <Typography component='p' variant='caption' sx={{ mb: 15 }}>
-          En comparación con los 8,000 viajes realizados el año pasado
+          En comparación con los {Math.floor((trips / 100) * 95)} viajes realizados el mes pasado
         </Typography>
         {data.map((item, index) => {
           return (
