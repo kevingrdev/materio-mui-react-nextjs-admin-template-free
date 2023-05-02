@@ -26,11 +26,22 @@ import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
 // import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 
 import dynamic from 'next/dynamic'
+import useSalesData from 'src/@core/hooks/useSalesData'
 
 const SalesByCountries = dynamic(() => import('src/views/dashboard/SalesByCountries'), { ssr: false })
 const StatisticsCard = dynamic(() => import('src/views/dashboard/StatisticsCard'), { ssr: false })
 
 const Dashboard = () => {
+  const { salesData } = useSalesData()
+
+  const trips = Number(salesData[0]?.stats) ?? 0
+  const drivers = Number(salesData[2]?.stats) ?? 0
+
+  const tripsWeek = Math.floor(trips / 4)
+  const userComplaint = Math.floor((trips / 100) * 1.4)
+  const tripsCancel = Math.floor((trips / 100) * 1.4)
+  const newDrivers = Math.floor((drivers / 100) * 4.4)
+
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
@@ -50,17 +61,17 @@ const Dashboard = () => {
           <Grid container spacing={6}>
             <Grid item xs={6}>
               <CardStatisticsVerticalComponent
-                stats='45,000'
+                stats={tripsWeek}
                 icon={<CommuteOutlined />}
                 color='success'
-                trendNumber='+10%'
+                trendNumber='+3%'
                 title='Total Viajes Realizados'
                 subtitle='Semanalmente'
               />
             </Grid>
             <Grid item xs={6}>
               <CardStatisticsVerticalComponent
-                stats='300'
+                stats={userComplaint}
                 title='Quejas  de los usuarios'
                 trend='negative'
                 color='secondary'
@@ -71,21 +82,21 @@ const Dashboard = () => {
             </Grid>
             <Grid item xs={6}>
               <CardStatisticsVerticalComponent
-                stats='22'
+                stats={newDrivers}
                 trend='positive'
-                trendNumber='+8%'
+                trendNumber='+1.4%'
                 title='Nuevos Conductores'
-                subtitle='Este mes'
+                subtitle='Mes anterior'
                 icon={<DriveEtaOutlined />}
               />
             </Grid>
             <Grid item xs={6}>
               <CardStatisticsVerticalComponent
-                stats='5'
+                stats={tripsCancel}
                 color='warning'
                 trend='negative'
-                trendNumber='+20%'
-                subtitle='Última Semana'
+                trendNumber='+4.4%'
+                subtitle='Mes anterior'
                 title='Cancelaciones por el usuario'
                 icon={<CancelOutlined />}
               />
