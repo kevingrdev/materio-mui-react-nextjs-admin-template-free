@@ -13,10 +13,12 @@ import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 // ** Custom Components Imports
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
+import { useRouter } from 'next/router'
 
 const WeeklyOverview = () => {
   // ** Hook
   const theme = useTheme()
+  const router = useRouter()
 
   const options = {
     chart: {
@@ -103,7 +105,13 @@ const WeeklyOverview = () => {
             Tu rendimiento de conductores es un 45% 😎 mejor en comparación al mes pasado
           </Typography>
         </Box>
-        <Button fullWidth variant='contained'>
+        <Button
+          fullWidth
+          variant='contained'
+          onClick={() => {
+            router.push('/conductores')
+          }}
+        >
           Detalles
         </Button>
       </CardContent>

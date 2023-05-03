@@ -1,15 +1,8 @@
 import axios from 'src/@core/utils/axios'
 
-async function getCities({ page = 1 }) {
+async function getCities() {
   try {
-    const response = await axios.get('/core/admin/zones/cities', {
-      params: {
-        page,
-        status: ['ACCEPT', 'RETENTION', 'NEW', 'BLOCKED_BY_PAYMENT', 'BLOCKED']
-      }
-    })
-
-    console.log({ response })
+    const response = await axios.get('/core/admin/zones/cities', {})
 
     return [null, response.data]
   } catch (error) {

@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useEffect } from 'react'
 
 // ** Next Import
 import { useRouter } from 'next/router'
@@ -22,6 +22,7 @@ import LogoutVariant from 'mdi-material-ui/LogoutVariant'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
+import { getFromLocalStorage } from 'src/@core/utils/localStorage'
 
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
@@ -35,6 +36,20 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
 const UserDropdown = () => {
   // ** States
   const [anchorEl, setAnchorEl] = useState(null)
+
+  const [userInfo, setUserInfo] = useState({
+    roles: ['ADMIN'],
+    email: '',
+    id: '',
+    active: false,
+    name: ''
+  })
+
+  useEffect(() => {
+    const res = getFromLocalStorage('userInfo')
+    console.log({ res })
+    setUserInfo({ ...res })
+  }, [])
 
   // ** Hooks
   const router = useRouter()
@@ -98,7 +113,7 @@ const UserDropdown = () => {
               <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
             </Badge>
             <Box sx={{ display: 'flex', marginLeft: 3, alignItems: 'flex-start', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 600 }}>John Doe</Typography>
+              <Typography sx={{ fontWeight: 600 }}>{userInfo.name}</Typography>
               <Typography variant='body2' sx={{ fontSize: '0.8rem', color: 'text.disabled' }}>
                 Admin
               </Typography>
@@ -106,7 +121,7 @@ const UserDropdown = () => {
           </Box>
         </Box>
         <Divider sx={{ mt: 0, mb: 1 }} />
-        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
+        {/* <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <AccountOutline sx={{ marginRight: 2 }} />
             Profile
@@ -123,8 +138,8 @@ const UserDropdown = () => {
             <MessageOutline sx={{ marginRight: 2 }} />
             Chat
           </Box>
-        </MenuItem>
-        <Divider />
+        </MenuItem> */}
+        {/* <Divider />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <CogOutline sx={{ marginRight: 2 }} />
@@ -143,7 +158,13 @@ const UserDropdown = () => {
             FAQ
           </Box>
         </MenuItem>
-        <Divider />
+        <Divider /> */}
+        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/account-settings/')}>
+          <Box sx={styles}>
+            <CogOutline sx={{ marginRight: 2 }} />
+            Settings
+          </Box>
+        </MenuItem>
         <MenuItem sx={{ py: 2 }} onClick={() => handleDropdownClose('/pages/login')}>
           <LogoutVariant sx={{ marginRight: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
           Logout

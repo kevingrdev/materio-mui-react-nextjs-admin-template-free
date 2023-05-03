@@ -11,9 +11,10 @@ import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 
 import TableContainer from '@mui/material/TableContainer'
-import { IconButton, TablePagination } from '@mui/material'
+import { Button, IconButton, TablePagination } from '@mui/material'
 import useGetDrivers from 'src/@core/hooks/useGetDrivers'
-import { Delete, InformationSlabCircleOutline, NoteEdit } from 'mdi-material-ui'
+import { CardAccountDetailsOutline } from 'mdi-material-ui'
+import { useRouter } from 'next/router'
 
 const statusObj = {
   ACTIVE: { color: 'success' },
@@ -26,6 +27,7 @@ const statusObj = {
 
 const DashboardTable = () => {
   // const { users, page, loading, nextPage, prevPage } = useGetUsers()
+  const router = useRouter()
   const { drivers, cities, page, loading, nextPage, prevPage } = useGetDrivers()
   console.log({ drivers })
 
@@ -60,6 +62,10 @@ const DashboardTable = () => {
     return city ? city.name : 'Ciudad no encontrada'
   }
 
+  const toDetail = id => {
+    router.push(`/conductor/${id}`)
+  }
+
   return (
     <Card>
       {loading && <LinearProgress />}
@@ -74,7 +80,7 @@ const DashboardTable = () => {
               <TableCell>Estado de licencia</TableCell>
               <TableCell>Siguente pago</TableCell>
               {/* <TableCell>Plan</TableCell> */}
-              {/* <TableCell>Acciones</TableCell> */}
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -129,6 +135,11 @@ const DashboardTable = () => {
                     <Delete />
                   </IconButton>
                 </TableCell> */}
+                  <TableCell>
+                    <Button variant='contained' fullWidth color='primary' onClick={() => toDetail(row.id)}>
+                      Ver detalle
+                    </Button>
+                  </TableCell>
                 </TableRow>
               )
             })}
