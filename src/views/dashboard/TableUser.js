@@ -9,8 +9,9 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import Typography from '@mui/material/Typography'
 import TableContainer from '@mui/material/TableContainer'
-import { LinearProgress, TablePagination } from '@mui/material'
+import { Button, LinearProgress, TablePagination } from '@mui/material'
 import useGetUsers from 'src/@core/hooks/useGetUsers'
+import { useRouter } from 'next/router'
 
 const statusObj = {
   ACTIVE: { color: 'success' },
@@ -19,9 +20,12 @@ const statusObj = {
 }
 
 const DashboardTable = () => {
+  const router = useRouter()
   const { users, page, loading, nextPage, prevPage } = useGetUsers()
 
-  console.log({ users })
+  const toDetail = id => {
+    router.push(`/user/${id}`)
+  }
 
   return (
     <Card>
@@ -34,6 +38,7 @@ const DashboardTable = () => {
               <TableCell>Correo</TableCell>
               <TableCell>Phone</TableCell>
               <TableCell>Estado</TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -58,6 +63,12 @@ const DashboardTable = () => {
                       '& .MuiChip-label': { fontWeight: 500 }
                     }}
                   />
+                </TableCell>
+
+                <TableCell sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <Button variant='contained' color='primary' onClick={() => toDetail(row.id)}>
+                    Ver detalle
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

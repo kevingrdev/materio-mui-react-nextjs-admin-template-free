@@ -12,7 +12,7 @@ import useDriver from 'src/@core/hooks/useDriverDetail'
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 import { Avatar, LinearProgress, Paper } from '@mui/material'
 import UpdateStatusDriver from 'src/views/dashboard/UpdateStatusDriver'
-import useDriverRides from 'src/@core/hooks/useDriverRides'
+
 import DriverRidesTable from 'src/views/dashboard/DriverRidesTable'
 
 // // ** Demo Components Imports

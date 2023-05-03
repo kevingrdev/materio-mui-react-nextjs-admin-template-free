@@ -4,13 +4,9 @@ import axios from 'src/@core/utils/axios'
 
 async function getDriverRides(id, page) {
   try {
-    console.log('-------')
-
     const ridesResponse = await axios.get(`/ride-hailing/admin/rides/driver/${id}`, {
       params: { page }
     })
-    console.log('-------')
-    console.log({ ridesResponse })
 
     const ridesData = ridesResponse.data.data
 
