@@ -4,16 +4,16 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { useRouter } from 'next/router'
 
-import useDriver from 'src/@core/hooks/useDriverDetail'
+import useDriver from 'src/legacy/@core/hooks/useDriverDetail'
 
 // ** Icons Imports
 
 // ** Styled Component Import
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
+import ApexChartWrapper from 'src/legacy/@core/styles/libs/react-apexcharts'
 import { Avatar, LinearProgress, Paper } from '@mui/material'
-import UpdateStatusDriver from 'src/views/dashboard/UpdateStatusDriver'
+import UpdateStatusDriver from 'src/legacy/views/dashboard/UpdateStatusDriver'
 
-import DriverRidesTable from 'src/views/dashboard/DriverRidesTable'
+import DriverRidesTable from 'src/legacy/views/dashboard/DriverRidesTable'
 
 // // ** Demo Components Imports
 // import TableDrivers from 'src/views/dashboard/TableDrivers'

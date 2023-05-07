@@ -4,10 +4,10 @@ import Grid from '@mui/material/Grid'
 // ** Icons Imports
 
 // ** Styled Component Import
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
+import ApexChartWrapper from 'src/legacy/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
-import TableDrivers from 'src/views/dashboard/TableDrivers'
+import TableDrivers from 'src/legacy/views/dashboard/TableDrivers'
 
 // import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 

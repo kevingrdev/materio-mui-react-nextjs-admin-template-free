@@ -27,14 +27,14 @@ import EyeOutline from 'mdi-material-ui/EyeOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 
 // ** Configs
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/legacy/configs/themeConfig'
 
 // ** Layout Import
-import BlankLayout from 'src/@core/layouts/BlankLayout'
+import BlankLayout from 'src/legacy/@core/layouts/BlankLayout'
 
 // ** Demo Imports
-import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
-import login from 'src/@core/domain/usecases/login'
+import FooterIllustrationsV1 from 'src/legacy/views/pages/auth/FooterIllustration'
+import login from 'src/legacy/@core/domain/usecases/login'
 import { CloseCircleOutline, Close } from 'mdi-material-ui'
 
 // ** Styled Components

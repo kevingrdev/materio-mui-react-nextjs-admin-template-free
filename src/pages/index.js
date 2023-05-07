@@ -9,27 +9,27 @@ import DriveEtaOutlined from 'mdi-material-ui/Car'
 import CancelOutlined from 'mdi-material-ui/Cancel'
 
 // ** Custom Components Imports
-import CardStatisticsVerticalComponent from 'src/@core/components/card-statistics/card-stats-vertical'
+import CardStatisticsVerticalComponent from 'src/legacy/@core/components/card-statistics/card-stats-vertical'
 
 // ** Styled Component Import
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
+import ApexChartWrapper from 'src/legacy/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
-import Table from 'src/views/dashboard/Table'
-import Trophy from 'src/views/dashboard/Trophy'
-import TotalEarning from 'src/views/dashboard/TotalEarning'
+import Table from 'src/legacy/views/dashboard/Table'
+import Trophy from 'src/legacy/views/dashboard/Trophy'
+import TotalEarning from 'src/legacy/views/dashboard/TotalEarning'
 
 // import StatisticsCard from 'src/views/dashboard/StatisticsCard'
-import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
-import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
+import WeeklyOverview from 'src/legacy/views/dashboard/WeeklyOverview'
+import DepositWithdraw from 'src/legacy/views/dashboard/DepositWithdraw'
 
 // import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 
 import dynamic from 'next/dynamic'
-import useSalesData from 'src/@core/hooks/useSalesData'
+import useSalesData from 'src/legacy/@core/hooks/useSalesData'
 
-const SalesByCountries = dynamic(() => import('src/views/dashboard/SalesByCountries'), { ssr: false })
-const StatisticsCard = dynamic(() => import('src/views/dashboard/StatisticsCard'), { ssr: false })
+const SalesByCountries = dynamic(() => import('src/legacy/views/dashboard/SalesByCountries'), { ssr: false })
+const StatisticsCard = dynamic(() => import('src/legacy/views/dashboard/StatisticsCard'), { ssr: false })
 
 const Dashboard = () => {
   const { salesData } = useSalesData()

@@ -8,11 +8,11 @@ import Grid from '@mui/material/Grid'
 import { Avatar, LinearProgress, Paper } from '@mui/material'
 
 // ** Styled Component Import
-import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
+import ApexChartWrapper from 'src/legacy/@core/styles/libs/react-apexcharts'
 
-import useUser from 'src/@core/hooks/useUser'
-import UserInformation from 'src/views/dashboard/UserInformation'
-import UserRidesTable from 'src/views/dashboard/UserRidesTable'
+import useUser from 'src/legacy/@core/hooks/useUser'
+import UserInformation from 'src/legacy/views/dashboard/UserInformation'
+import UserRidesTable from 'src/legacy/views/dashboard/UserRidesTable'
 
 const User = () => {
   const router = useRouter()

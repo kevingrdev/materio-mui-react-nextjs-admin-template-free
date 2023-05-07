@@ -14,8 +14,8 @@ import MuiTab from '@mui/material/Tab'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 
 // ** Demo Tabs Imports
-import TabInfo from 'src/views/account-settings/TabInfo'
-import TabAccount from 'src/views/account-settings/TabAccount'
+import TabInfo from 'src/legacy/views/account-settings/TabInfo'
+import TabAccount from 'src/legacy/views/account-settings/TabAccount'
 
 // ** Third Party Styles Imports
 import 'react-datepicker/dist/react-datepicker.css'
