@@ -98,7 +98,7 @@ const Dashboard = () => {
                 trend='negative'
                 trendNumber='+4.4%'
                 subtitle='Mes anterior'
-                title='Cancelaciones por el usuario'
+                title='Cancelaciones'
                 icon={<CancelOutlined />}
               />
             </Grid>
